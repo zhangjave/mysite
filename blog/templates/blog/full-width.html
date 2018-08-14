@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,17 +8,17 @@
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	    <!-- css -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/ionicons.min.css">
-		<link rel="stylesheet" href="css/pace.css">
-	    <link rel="stylesheet" href="css/custom.css">
+       <!-- css -->
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
 
-	    <!-- js -->
-	    <script src="js/jquery-2.1.3.min.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-	    <script src="js/pace.min.js"></script>
-	    <script src="js/modernizr.custom.js"></script>
+        <!-- js -->
+        <script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
+        <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'blog/js/pace.min.js' %}"></script>
+        <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
 	</head>
 
 	<body>
@@ -64,97 +65,31 @@
 			<div class="container">
 				<div class="row">
 					<main class="col-md-12">
-						<article class="post post-1">
-							<header class="entry-header">
-								<h1 class="entry-title">
-									<a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="#">Web Design</a></span>
-			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-			
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-			
-									<span class="comments-link"><a href="">4 Comments</a></span>
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<div class="read-more cl-effect-14">
-									<a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-								</div>
-							</div>
-						</article>
 
-						<article class="post post-2">
-							<header class="entry-header">
-								<h1 class="entry-title">
-									<a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="#">Web Design</a></span>
-			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-			
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-			
-									<span class="comments-link"><a href="#">4 Comments</a></span>
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<div class="read-more cl-effect-14">
-									<a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-								</div>
-							</div>
-						</article>
+                        {% for post in post_list %}
+                            <article class="post {{ post.pk }}">
+                                <header class="entry-header">
+                                    <h1 class="entry-title">
+                                        <a href="single.html">{{ post.title }}</a>
+                                    </h1>
+                                    <div class="entry-meta">
+                                        <span class="post-category"><a href="#">{{ post.category }}</a></span>
 
-						<article class="post post-3">
-							<header class="entry-header">
-								<h1 class="entry-title">
-									<a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="#" rel="category tag">Web Design</a></span>
-			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-			
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-			
-									<span class="comments-link"><a href="#">4 Comments</a></span>
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<div class="read-more cl-effect-14">
-									<a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-								</div>
-							</div>
-						</article>
+                                        <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ post.created_time }}</time></a></span>
 
-						<article class="post post-4">
-							<header class="entry-header">
-								<h1 class="entry-title">
-									<a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="#" rel="category tag">Web Design</a></span>
-			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-			
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-			
-									<span class="comments-link"><a href="#">4 Comments</a></span>
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-								<div class="read-more cl-effect-14">
-									<a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-								</div>
-							</div>
-						</article>
+                                        <span class="post-author"><a href="#">{{ post.author }}</a></span>
+
+                                        <span class="comments-link"><a href="">4 Comments</a></span>
+                                    </div>
+                                </header>
+                                <div class="entry-content clearfix">
+                                    <p>{{ post.excerpt }}</p>
+                                    <div class="read-more cl-effect-14">
+                                        <a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
+                                    </div>
+                                </div>
+                            </article>
+                        {% endfor %}
 					</main>
 				</div>
 			</div>

@@ -76,30 +76,31 @@
                 <div class="widget widget-recent-posts">
                     <h3 class="widget-title">最新文章</h3>
                     <ul>
-                       {% block lasted_blogs %}
-                       {% endblock %}
+                        {% for blog in lasted_blogs %}
+                            <li>
+                                <a href={{ blog.get_absolute_url }}>{{ blog.title }}</a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="widget widget-archives">
                     <h3 class="widget-title">归档</h3>
                     <ul>
-                        <li>
-                            <a href="#">2017 年 5 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 4 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 3 月</a>
-                        </li>
+                        {% block blogs_history %}
+                        {% endblock %}
                     </ul>
                 </div>
 
                 <div class="widget widget-category">
                     <h3 class="widget-title">分类</h3>
                     <ul>
-                        {% block  blogs_category %}
-                        {% endblock %}
+                        {% block blogs_category %}
+                            {% for cate in category %}
+                                <li>
+                                    <a href="#">{{ cate.name }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endblock blogs_category %}
                     </ul>
                 </div>
 
@@ -107,7 +108,12 @@
                     <h3 class="widget-title">标签云</h3>
                     <ul>
                         {% block blog_tag_cloud %}
-                        {% endblock %}
+                            {% for tag in tags %}
+                                <li>
+                                    <a href="#">{{ tag.name }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endblock blog_tag_cloud %}
                     </ul>
                 </div>
                 <div class="rss">
